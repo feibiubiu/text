@@ -7,6 +7,8 @@
       <el-button type="info" id="cccc" @click="buttonFull">按钮全屏</el-button>
       <el-button type="warning" @click="control">控制大小</el-button>
       <el-button type="danger" @click="dragUPLOAD">拖拽上传</el-button>
+      <el-button v-changeColor:foo.a="'message'" type="danger" @click="myDirective">自定义指令</el-button>
+      <el-button type="success" @click="pdf">打印pdf</el-button>
     </el-row>
     <router-view />
   </div>
@@ -16,8 +18,8 @@
 import screenfull from "screenfull"; // 引入全屏显示
 export default {
   name: "App",
-  mounted(){
-    console.log("ffffffffff", this.$el.getBoundingClientRect())
+  mounted() {
+    console.log("ffffffffff", this.$el.getBoundingClientRect());
   },
   methods: {
     toDragTable() {
@@ -26,25 +28,35 @@ export default {
     toHome() {
       this.$router.push("/");
     },
-    fullScreen(){
-      if(!screenfull.isEnabled){ 
-        this.$message.error('当前该浏览器不支持全屏展示')
-        return false
+    fullScreen() {
+      if (!screenfull.isEnabled) {
+        this.$message.error("当前该浏览器不支持全屏展示");
+        return false;
       }
-      screenfull.toggle()
+      screenfull.toggle();
     },
-    buttonFull(){
-       screenfull.request(document.getElementById('cccc'));
-       //screenfull.exit(); 关闭全屏展示
+    buttonFull() {
+      screenfull.request(document.getElementById("cccc"));
+      //screenfull.exit(); 关闭全屏展示
     },
-    control(){
-      var a = this.$ELEMENT
-      this.$ELEMENT.size = "mini"
+    control() {
+      var a = this.$ELEMENT;
+      this.$ELEMENT.size = "mini";
       //console.log(a)
-     
     },
-    dragUPLOAD(){
-     this.$router.push("/dragUpload");
+    dragUPLOAD() {
+      this.$router.push("/dragUpload");
+    },
+    myDirective() {
+      console.log("你讲咩啊");
+    },
+    pdf() {
+      setTimeout(() => {
+        
+        this.$nextTick(() => {
+          window.print();
+        });
+      }, 3000);
     }
   }
 };

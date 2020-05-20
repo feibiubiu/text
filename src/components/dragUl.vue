@@ -52,6 +52,9 @@ export default {
         setData: function(dataTransfer) {
           // 为了防止火狐浏览器出bug
           dataTransfer.setData("Text", "");
+        },
+        onEnd: evt => {
+          console.log("拖拽的元素",el2)
         }
       });
     }

@@ -25,6 +25,11 @@ export default new Router({
       path: '/dragUpload',
       name: 'dragUpload',
       component: () => import('@/components/dragUpload.vue')
+    },
+    {
+      path: '/styick',
+      name: 'styick',
+      component: () => import('@/components/styick-demo.vue')
     }
 
   ]
