@@ -30,6 +30,16 @@ export default new Router({
       path: '/styick',
       name: 'styick',
       component: () => import('@/components/styick-demo.vue')
+    },
+    {
+      path: '/loading',
+      name: 'loading',
+      component: () => import('@/components/loading.vue')
+    },
+    {
+      path: '/dataV',
+      name: 'dataV',
+      component: () => import('@/components/dataV.vue')
     }
 
   ]

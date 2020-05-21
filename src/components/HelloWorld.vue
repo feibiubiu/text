@@ -1,28 +1,37 @@
 <template>
   <div class="hello">
-    <button @click="copy1($event)">我就是要复制你</button>
-    <button >我就是要复制你谁谁谁谁谁谁</button>
+    <div v-if="!showLoading">
+      <button @click="copy1($event)">我就是要复制你</button>
+      <button>我就是要复制你谁谁谁谁谁谁</button>
+    </div>
+    <transition name="loading">
+      <loading v-show="showLoading"></loading>
+    </transition>
   </div>
 </template>
 
 <script>
 import clipboard from "../utils/clipboard";
-
+import loading from "./loading";
 export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      msg: "Welcome to Your Vue.js App",
+      showLoading: true
     };
   },
-  // mounted() {
-  //   let xxx = new Clipboard(' ', {
-  //       text: () => ''
-  //   });
-  // },
+  components: {
+    loading
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showLoading = false
+    },2000)
+  },
   methods: {
-    copy1(event){
-      clipboard("1234",event)
+    copy1(event) {
+      clipboard("1234", event);
     }
   }
 };

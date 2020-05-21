@@ -9,6 +9,7 @@
       <el-button type="danger" @click="dragUPLOAD">拖拽上传</el-button>
       <el-button v-changeColor:foo.a="'message'" type="danger" @click="myDirective">自定义指令</el-button>
       <el-button type="success" @click="pdf">打印pdf</el-button>
+      <el-button type="success" @click="dataV">dataVue插件</el-button>
     </el-row>
     <router-view />
   </div>
@@ -57,6 +58,10 @@ export default {
           window.print();
         });
       }, 3000);
+    },
+    //ffff
+    dataV(){
+      this.$router.push("/dataV");
     }
   }
 };

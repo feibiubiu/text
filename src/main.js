@@ -7,6 +7,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './utils/changeColor'
 import * as filters from './filter' // global filters
+import dataV from '@jiaminghi/data-view'
+
+Vue.use(dataV)
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 /* eslint-disable no-new */
